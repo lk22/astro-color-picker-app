@@ -41,9 +41,9 @@ function ColorPicker() {
     return availableColors.map((color) => {
       return <div 
         className="col-3 color" 
-        style={{ ...styles.color, backgroundColor: color.hex }} 
-        key={color.color}
-        onClick={() => handleSelectColor(color.hex)}
+        style={{ ...styles.color, backgroundColor: color.value }} 
+        key={color.key}
+        onClick={() => handleSelectColor(color.value)}
         ></div>
     })
   }

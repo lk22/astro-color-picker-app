@@ -6,7 +6,6 @@ import SelectedColorList from '../components/React/SelectedColorList.jsx';
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
 		<h1><span class="text-gradient">Color Selector</span></h1>
 		<p class="instructions">
 			Select a color below to copy to clipboard and use whereever you need it.
@@ -14,15 +13,10 @@ import SelectedColorList from '../components/React/SelectedColorList.jsx';
 		<ColorPicker client:load/>
 		<SelectedColor client:load/>
 		<SelectedColorList client:load/>
-	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
+	
 	h1 {
 		font-size: 3rem;
 		font-weight: 800;

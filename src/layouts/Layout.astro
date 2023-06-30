@@ -17,7 +17,9 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -32,5 +34,11 @@ const { title } = Astro.props;
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 1140px;
 	}
 </style>

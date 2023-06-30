@@ -9,8 +9,7 @@ function SelectedColor() {
       height: "200px",
       width: "100%",
       borderRadius: "5px",
-      backgroundColor: selectedColor,
-      transition: "background-color 0.25s ease-in-out",
+      backgroundColor: selectedColor
     }
   }
 
