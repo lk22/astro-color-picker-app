@@ -3,32 +3,32 @@ const initialColors = {
   current: '',
   selected: [],
   availableColors: [
-    {key: 'red', value: '#ff0000'},
-    {key: 'green', value: '#00ff00'},
-    {key: 'blue', value: '#0000ff'},
-    {key: 'yellow', value: '#ffff00'},
-    {key: 'cyan', value: '#00ffff'},
-    {key: 'magenta', value: '#ff00ff'},
-    {key: 'black', value: '#000000'},
-    {key: 'white', value: '#ffffff'},
-    {key: 'gray', value: '#808080'},
-    {key: 'lightgray', value: '#c0c0c0'},
-    {key: 'darkgray', value: '#404040'},
-    {key: 'brown', value: '#a52a2a'},
-    {key: 'orange', value: '#ffa500'},
-    {key: 'purple', value: '#800080'},
-    {key: 'pink', value: '#ffc0cb'},
-    {key: 'gold', value: '#ffd700'},
-    {key: 'silver', value: '#c0c0c0'},
-    {key: 'lime', value: '#00ff00'},
-    {key: 'olive', value: '#808000'},
-    {key: 'navy', value: '#000080'},
-    {key: 'teal', value: '#008080'},
-    {key: 'maroon', value: '#800000'},
-    {key: 'fuchsia', value: '#ff00ff'},
-    {key: 'aqua', value: '#00ffff'},
-    {key: 'aliceblue', value: '#f0f8ff'},
-    {key: 'antiquewhite', value: '#faebd7'},
+    {key: 'red', value: '#ff0000', isCopied: false},
+    {key: 'green', value: '#00ff00', isCopied: false},
+    {key: 'blue', value: '#0000ff', isCopied: false},
+    {key: 'yellow', value: '#ffff00', isCopied: false},
+    {key: 'cyan', value: '#00ffff', isCopied: false},
+    {key: 'magenta', value: '#ff00ff', isCopied: false},
+    {key: 'black', value: '#000000', isCopied: false},
+    {key: 'white', value: '#ffffff', isCopied: false},
+    {key: 'gray', value: '#808080', isCopied: false},
+    {key: 'lightgray', value: '#c0c0c0', isCopied: false},
+    {key: 'darkgray', value: '#404040', isCopied: false},
+    {key: 'brown', value: '#a52a2a', isCopied: false},
+    {key: 'orange', value: '#ffa500', isCopied: false},
+    {key: 'purple', value: '#800080', isCopied: false},
+    {key: 'pink', value: '#ffc0cb', isCopied: false},
+    {key: 'gold', value: '#ffd700', isCopied: false},
+    {key: 'silver', value: '#c0c0c0', isCopied: false},
+    {key: 'lime', value: '#00ff00', isCopied: false},
+    {key: 'olive', value: '#808000', isCopied: false},
+    {key: 'navy', value: '#000080', isCopied: false},
+    {key: 'teal', value: '#008080', isCopied: false},
+    {key: 'maroon', value: '#800000', isCopied: false},
+    {key: 'fuchsia', value: '#ff00ff', isCopied: false},
+    {key: 'aqua', value: '#00ffff', isCopied: false},
+    {key: 'aliceblue', value: '#f0f8ff', isCopied: false},
+    {key: 'antiquewhite', value: '#faebd7', isCopied: false},
   ],
   isCopied: false
 }
@@ -42,6 +42,10 @@ export const selectColor = (color) => {
 
 export const copyColor = () => {
   colors.set({ ...colors.get(), isCopied: true })
+}
+
+export const resetCopyColor = () => {
+  colors.set({ ...colors.get(), isCopied: false })
 }
 
 export const getAvailableColors = () => {

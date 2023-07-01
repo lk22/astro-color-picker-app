@@ -6,28 +6,22 @@ import SelectedColorList from '../components/React/SelectedColorList.jsx';
 ---
 
 <Layout title="Welcome to Astro.">
+	<div class="colorpicker-wrapper">
 		<p class="instructions">
 			Select a color below to copy to clipboard and use whereever you need it.
 		</p>
 		<ColorPicker client:load/>
 		<SelectedColor client:load/>
 		<SelectedColorList client:load/>
+	</div>
 </Layout>
-
 <style>
+
+	.colorpicker-wrapper {
+		padding: 5rem;
+		background: #f9f9f9;
+	}
 	
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
 	.instructions {
 		line-height: 1.6;
 		margin: 1rem 0;
@@ -35,7 +29,6 @@ import SelectedColorList from '../components/React/SelectedColorList.jsx';
 		background-color: rgba(var(--accent), 12%);
 		padding: 1rem;
 		border-radius: 0.4rem;
-		color: #f9f9f9;
 	}
 	.instructions code {
 		font-size: 0.875em;

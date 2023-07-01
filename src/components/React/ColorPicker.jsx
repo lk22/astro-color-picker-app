@@ -3,14 +3,12 @@ import {
   colors, 
   getAvailableColors, 
   selectColor, 
-  getCurrentColor,
-  copyColor
+  copyColor,
+  resetCopyColor
 } from "../../stores/colors";
 
 function ColorPicker() {
   const availableColors = getAvailableColors()
-  const selected = getCurrentColor()
-  const colorStore = useStore(colors)
 
   const styles = {
     row: {
@@ -29,14 +27,23 @@ function ColorPicker() {
 
   const handleSelectColor = (color) => {
     selectColor(color)
-    const html = document.querySelector('html');
-    html.style.background = color;
+    copyColor(color);
+
     // use clipboard API to copy color to clipboard
     navigator.clipboard.writeText(color)
       .then(() => {
         copyColor(color)
       }
     )
+
+    setTimeout(() => {
+      resetCopyColor()
+    }, 2000)
+  }
+
+  const handleHoverColor = (color) => {
+    const html = document.querySelector('html');
+    html.style.background = color;
   }
 
   const renderColors = () => {
@@ -46,6 +53,7 @@ function ColorPicker() {
         style={{ ...styles.color, backgroundColor: color.value }} 
         key={color.key}
         onClick={() => handleSelectColor(color.value)}
+        onMouseEnter={() => handleHoverColor(color.value)}
         ></div>
     })
   }
