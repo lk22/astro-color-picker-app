@@ -29,6 +29,8 @@ function ColorPicker() {
 
   const handleSelectColor = (color) => {
     selectColor(color)
+    const html = document.querySelector('html');
+    html.style.background = color;
     // use clipboard API to copy color to clipboard
     navigator.clipboard.writeText(color)
       .then(() => {
