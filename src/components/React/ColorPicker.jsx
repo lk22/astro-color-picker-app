@@ -1,127 +1,117 @@
 import { useStore } from "@nanostores/react";
 import { 
   colors, 
-  getAvailableColors, 
-  selectColor, 
-  copyColor,
-  resetCopyColor,
-  setNewAvailableColors
+  setNewPrimaryColor,
+  setNewSecondaryColor,
+  setNewTextColor,
+  setNewLinkColor,
+  setNewTertiaryColor,
+  setNewBackgroundColor,
+  setNewButtonTextColor,
+  setNewButtonColor
 } from "../../stores/colors";
 
 function ColorPicker() {
-  const availableColors = getAvailableColors()
   const colorsState = useStore(colors)
-  console.log(colorsState)
-
+  
   const styles = {
-    pickerOptions: {
+    wrapper: {
       position: "fixed",
       bottom: "20px",
-      right: "20px",
-      width: "300px",
-      height: "100px",
+      maxWidth: "1180px",
+      minHeight: "100px",
+      paddingInline: "2rem",
+      backgroundColor: "#f9f9f9",
+      width: "1180px",
+      border: "2px solid",
+      padding: "1rem",
+      borderRadius: "10px",
+      display: "flex",
+      justifyContent: "space-between"
+    },
+    pickerOptions: {
+      width: "100%"
     },
     row: {
       display: "flex",
-      flexWrap: "wrap",
-      gap: "10px",
+      justifyContent: "space-between",
+      flexWrap: "wrap"
     },
-    color: {
-      height: "100px",
-      width: "18%",
-      flex: "0 0 18%",
-      cursor: "pointer",
-      borderRadius: "5px",
+    columnPicker: {
+      width: "16%",
+      flex: "0 0 16%"
+    },
+    input: {
+      height: "40px",
+      width: "50%",
+      border: "none",
     }
   }
 
-  const handleSelectColor = (color) => {
-    selectColor(color)
-    copyColor(color);
-
-    // use clipboard API to copy color to clipboard
-    navigator.clipboard.writeText(color)
-      .then(() => {
-        copyColor(color)
-      }
-    )
-
-    setTimeout(() => {
-      resetCopyColor()
-    }, 2000)
+  const handlePrimaryColor = (e) => {
+    setNewPrimaryColor(e.target.value)
   }
 
-  const handleHoverColor = (color) => {
-    const html = document.querySelector('html');
-    html.style.background = color;
+  const handleSecondaryColor = (e) => {
+    setNewSecondaryColor(e.target.value)
   }
 
-  const handleNewColorSelect = (e) => {
-    const newColorValue = e.target.value;
-    const newColorObj = {
-      key: newColorValue,
-      value: newColorValue,
-      variants: [
-        newColorValue + "90",
-        newColorValue + "80",
-        newColorValue + "70",
-        newColorValue + "60",
-        newColorValue + "50",
-        newColorValue + "40",
-        newColorValue + "30",
-        newColorValue + "20",
-        newColorValue + "10",
-      ]
-    }
-    setNewAvailableColors(newColorObj)
+  const handleTextColor = (e) => {
+    setNewTextColor(e.target.value)
   }
 
-  const renderColors = () => {
-    return availableColors.map((color) => {
-      return (
-        <>
-          <div 
-            className="col-3 color"
-            key={color.key}
-            style={{...styles.color, backgroundColor: color.value}}
-            onClick={() => handleSelectColor(color.value)}
-            onMouseEnter={() => handleHoverColor(color.value)}
-            onMouseLeave={() => handleHoverColor("#fff")}
-          >
+  const handleTertiaryColor = (e) => {
+    setNewTertiaryColor(e.target.value)
+  }
 
-          </div>
-          {color.variants.map((variant) => {
-            console.log(variant)
-            return <div 
-            className="col-3 color-variant"
-            key={variant}
-            style={{...styles.color, backgroundColor: variant}}
-            onClick={() => handleSelectColor(variant)}
-            onMouseEnter={() => handleHoverColor(variant)}
-            onMouseLeave={() => handleHoverColor("#fff")}
-          >
+  const handleBackgrounColor = (e) => {
+    setNewBackgroundColor(e.target.value)
+    document.querySelector('html').style.background = e.target.value
+  }
 
-          </div>
-          })}
-        </>
-      )
-    })
+  const handleButtonTextColor = (e) => {
+    setNewButtonTextColor(e.target.value)
+  }
+
+  const handleButtonColor = (e) => {
+    setNewButtonColor(e.target.value)
+  }
+
+  const handleLinkColor = (e) => {
+    setNewLinkColor(e.target.value)
   }
 
   return (
     <div>
-      <div className="color-picker-wrapper">
-        <div className="picker-options" style={{...styles.pickerOptions}}>
-          <div className="row">
-            <div className="col-12">
-              <h3>Color picker</h3>
-              <input type="color" name="" id="" onChange={(e) => handleNewColorSelect(e)} />
+      <div className="color-picker-wrapper" style={styles.wrapper}>
+        <div className="picker-options container" style={styles.pickerOptions}>
+          <div className="row" style={styles.row}>
+            <div className="col-2 d-flex flex-column" style={styles.columnPicker}>
+              <p>Background Color</p>
+              <input style={styles.input} type="color" value={colorsState.backgroundColor} name="" id="" onChange={(e) => handleBackgrounColor(e)} />
+            </div>
+            <div className="col-2" style={styles.columnPicker}>
+              <p>Primary color</p>
+              <input style={styles.input} type="color" value={colorsState.primaryColor} name="" id="" onChange={(e) => handlePrimaryColor(e)} />
+            </div>
+            <div className="col-2" style={styles.columnPicker}>
+              <p>Secondary color</p>
+              <input style={styles.input} type="color" value={colorsState.secondaryColor} name="" id="" onChange={(e) => handleSecondaryColor(e)} />
+            </div>
+            <div className="col-2" style={styles.columnPicker}>
+              <p>Text color</p>
+              <input style={styles.input} type="color" value={colorsState.tertiaryColor} name="" id="" onChange={(e) => handleTertiaryColor(e)} />
+            </div>
+            <div className="col-2" style={styles.columnPicker}>
+              <p>Button  color</p>
+              <input style={styles.input} type="color" value={colorsState.buttonBackgroundColor} name="" id="" onChange={(e) => handleButtonColor(e)} />
+            </div>
+            <div className="col-2" style={styles.columnPicker}>
+              <p>Button Text color</p>
+              <input style={styles.input} type="color" value={colorsState.buttonTextColor} name="" id="" onChange={(e) => handleButtonTextColor(e)} />
             </div>
           </div>
         </div>
-      </div>
-      <div className="row" style={styles.row}>
-        {renderColors()}
       </div>
     </div>
   )

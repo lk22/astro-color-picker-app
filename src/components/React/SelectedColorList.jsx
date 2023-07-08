@@ -3,7 +3,6 @@ import { colors } from "../../stores/colors";
 
 function SelectedColorList() {
   const selectedColors = useStore(colors).selected;
-  console.log(selectedColors)
   return (
     <div>
       <h3>Selected colors</h3>

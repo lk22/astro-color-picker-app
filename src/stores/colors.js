@@ -1,26 +1,14 @@
 import { atom } from 'nanostores'
 
-
 const initialColors = {
-  current: '#ff0000',
-  selected: [],
-  // availableColors,
-  availableColors: [
-    {key: 'red', value: '#ff0000', isCopied: false, variants: [
-      '#ff000090',
-      '#ff000080',
-      '#ff000070',
-      '#ff000060',
-      '#ff000050',
-      '#ff000040',  
-    ]},
-  ],
-  backgroundColor: '#f9f9f9',
-  primaryColor: '#ff0000',
+  backgroundColor: "#f9f9f9",
+  primaryColor: '#c75955',
   secondaryColor: '#0000ff',
   linkColor: '#1a1a1a',
-  textColor: '#1a1a1a',
-  isCopied: false
+  textColor: '#0000ff',
+  tertiaryColor: '#1a1a1a',
+  buttonBackgroundColor: '#212121',
+  buttonTextColor: '#f9f9f9'
 }
 
 export const colors = atom(initialColors);
@@ -33,6 +21,38 @@ export const selectColor = (color) => {
 export const setNewAvailableColors = (...newColors) => {
   // set new available colors
   colors.set({ ...colors.get(), availableColors: newColors })
+}
+
+export const setNewPrimaryColor = (color) => {
+  colors.set({...colors.get(), primaryColor: color})
+}
+
+export const setNewSecondaryColor = (color) => {
+  colors.set({...colors.get(), secondaryColor: color})
+}
+
+export const setNewBackgroundColor = (color) => {
+  colors.set({...colors.get(), backgroundColor: color});
+}
+
+export const setNewTextColor = (color) => {
+  colors.set({...colors.get(), textColor: color});
+}
+
+export const setNewButtonTextColor = (color) => {
+  colors.set({...colors.get(), buttonTextColor: color});
+}
+
+export const setNewButtonColor = (color) => {
+  colors.set({...colors.get(), buttonBackgroundColor: color});
+}
+
+export const setNewTertiaryColor = (color) => {
+  colors.set({...colors.get(), tertiaryColor: color});
+}
+
+export const setNewLinkColor = (color) => {
+  colors.set({...colors.get(), linkColor: color});
 }
 
 export const copyColor = () => {
@@ -53,8 +73,4 @@ export const getSeleectedColors = () => {
 
 export const getCurrentColor = () => {
   return colors.get().current
-}
-
-export const getColorVariant = (color) => {
-  return colors.get().availableColors.find(c => c.key === color).variants
 }

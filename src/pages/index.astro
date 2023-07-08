@@ -1,26 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ColorPicker from '../components/React/ColorPicker.jsx';
-import SelectedColor from '../components/React/SelectedColor.jsx';
-import SelectedColorList from '../components/React/SelectedColorList.jsx';
+import Hero from '../components/React/PageComponents/Hero.jsx'
+import Text from '../components/React/PageComponents/Text.jsx'
+import Card from '../components/React/PageComponents/Card.jsx'
 ---
 
 <Layout title="Welcome to Astro.">
 	<div class="colorpicker-wrapper">
-		<p class="instructions">
-			Select a color below to copy to clipboard and use whereever you need it.
-		</p>
+		<div class="hero">
+			<Hero height="300px" width="100%" client:load />
+		</div>
+		<Text align="center" />
+		<div class="card-group">
+			<div class="card">
+				<Card
+					title="Simple visualizations"
+					description="Push a few buttons and get a beautiful visualization of your data." 
+					client:load
+				/>
+			</div>
+			<div class="card">
+				<Card
+					title="Its realistic"
+					description="Color Palettes make it hard to pick. This tool distributes the colors on a real website." 
+					description="It can be difficult to find the correct color palette for your website. This tool distributes the colors on a real time website." 
+					client:load
+				/>
+			</div>
+			<div class="card">
+				<Card
+					title="Simple visualizations"
+					description="Push a few buttons and get a beautiful visualization of your data." 
+					client:load
+				/>
+			</div>
+		</div>
 		<ColorPicker client:load/>
-		<SelectedColor client:load/>
-		<SelectedColorList client:load/>
 	</div>
 </Layout>
 <style>
-
-	.colorpicker-wrapper {
-		padding: 5rem;
-		background: #f9f9f9;
-	}
 	
 	.instructions {
 		line-height: 1.6;
@@ -40,6 +59,22 @@ import SelectedColorList from '../components/React/SelectedColorList.jsx';
 	}
 	.instructions strong {
 		color: rgb(var(--accent));
+	}
+
+	.card-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: space-between;
+	}
+
+	.card-group .card {
+		width: 33%;
+		flex: 0 0 32%;
+	}
+
+	.card-group .card:not(:first-child) {
+		margin-right: 0rem;
 	}
 
 </style>
