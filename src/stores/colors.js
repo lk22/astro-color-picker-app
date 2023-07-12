@@ -76,13 +76,7 @@ export const getCurrentColor = () => {
 }
 
 export const downloadColors = () => {
-  console.log(JSON.stringify(colors.get()))
-  const colorState = JSON.stringify(colors.get())
-  fs.writeFile("colors.json", colorState, function(err) {
-    if (err) {
-      console.log(err)
-    }
-  })
+
   // const colors = JSON.stringify(colors.get())
   // fs.writeFile("colors.json", colors, function(err) {
   //   if (err) {
