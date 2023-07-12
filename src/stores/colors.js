@@ -1,7 +1,5 @@
 import { atom } from 'nanostores'
 
-import fs from "fs";
-
 const initialColors = {
   backgroundColor: "#f9f9f9",
   primaryColor: '#c75955',
