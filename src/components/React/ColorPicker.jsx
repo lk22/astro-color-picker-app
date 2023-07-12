@@ -106,7 +106,7 @@ function ColorPicker() {
       <div className="design-downloader" style={{position: "fixed", left: "30px", bottom: "75px"}}>
         <button className="btn btn-primary download-button" onClick={() => handleToggleModal()}>Download</button>
       </div>
-      <div className="toggle-picker" style={{position: "fixed", left: "30px;", bottom: "30px;"}}>
+      <div className="toggle-picker" style={{position: "fixed", left: "30px", bottom: "30px"}}>
         <button className="btn btn-primary" onClick={() => handleToggleColorPicker()}>Toggle picker</button>
       </div>
       <div className="color-picker-wrapper" style={{...styles.wrapper, display: isToggled}}>
