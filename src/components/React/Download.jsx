@@ -1,6 +1,5 @@
 import React from 'react'
 import {useStore} from "@nanostores/react";
-import {colors, downloadColors} from "../../stores/colors";
 
 function Download() {
   return (

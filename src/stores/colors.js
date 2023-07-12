@@ -2,7 +2,7 @@ import { atom } from 'nanostores'
 
 const initialColors = {
   backgroundColor: "#f9f9f9",
-  primaryColor: '#c75955',
+  primaryColor: '#c75w955',
   secondaryColor: '#c5d43f',
   linkColor: '#1a1a1a',
   textColor: '#0000ff',
@@ -73,14 +73,4 @@ export const getSeleectedColors = () => {
 
 export const getCurrentColor = () => {
   return colors.get().current
-}
-
-export const downloadColors = () => {
-
-  // const colors = JSON.stringify(colors.get())
-  // fs.writeFile("colors.json", colors, function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
 }
