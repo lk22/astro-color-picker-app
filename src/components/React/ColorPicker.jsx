@@ -13,8 +13,7 @@ import {
 
 import { useState } from "react";
 
-import Download from './Download'
-import VariablesModal from "./PageComponents/VariablesModal";
+import VariablesModal from "./PageComponents/VariablesModal.jsx";
 
 function ColorPicker() {
   const colorsState = useStore(colors)
