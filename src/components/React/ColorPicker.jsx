@@ -11,8 +11,17 @@ import {
   setNewButtonColor
 } from "../../stores/colors";
 
+import { useState } from "react";
+
+import Download from './Download'
+import VariablesModal from "./PageComponents/VariablesModal";
+
 function ColorPicker() {
   const colorsState = useStore(colors)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const isToggled = isOpen ? "flex" : "none"
   
   const styles = {
     wrapper: {
@@ -27,7 +36,7 @@ function ColorPicker() {
       padding: "1rem",
       borderRadius: "10px",
       display: "flex",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
     },
     pickerOptions: {
       width: "100%"
@@ -35,7 +44,8 @@ function ColorPicker() {
     row: {
       display: "flex",
       justifyContent: "space-between",
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      transition: "all 0.5s ease-in-out"
     },
     columnPicker: {
       width: "16%",
@@ -47,7 +57,8 @@ function ColorPicker() {
       border: "none",
     }
   }
-
+  
+  
   const handlePrimaryColor = (e) => {
     setNewPrimaryColor(e.target.value)
   }
@@ -77,13 +88,28 @@ function ColorPicker() {
     setNewButtonColor(e.target.value)
   }
 
-  const handleLinkColor = (e) => {
-    setNewLinkColor(e.target.value)
+  const handleToggleColorPicker = () => {
+    setIsOpen(!isOpen)
+  }
+
+  // toggle modal
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
   }
 
   return (
     <div>
-      <div className="color-picker-wrapper" style={styles.wrapper}>
+      <div className="design-downloader" style={{position: "fixed", left: "30px", bottom: "75px"}}>
+        <button className="btn btn-primary download-button" onClick={() => handleToggleModal()}>Download</button>
+      </div>
+      <div className="toggle-picker" style={{position: "fixed", left: "30px;", bottom: "30px;"}}>
+        <button className="btn btn-primary" onClick={() => handleToggleColorPicker()}>Toggle picker</button>
+      </div>
+      <div className="color-picker-wrapper" style={{...styles.wrapper, display: isToggled}}>
         <div className="picker-options container" style={styles.pickerOptions}>
           <div className="row" style={styles.row}>
             <div className="col-2 d-flex flex-column" style={styles.columnPicker}>
@@ -113,6 +139,7 @@ function ColorPicker() {
           </div>
         </div>
       </div>
+      <VariablesModal isModalOpen={isModalOpen} handleCloseModal={closeModal}/>
     </div>
   )
 }

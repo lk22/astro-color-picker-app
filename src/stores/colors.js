@@ -1,9 +1,11 @@
 import { atom } from 'nanostores'
 
+import fs from "fs";
+
 const initialColors = {
   backgroundColor: "#f9f9f9",
   primaryColor: '#c75955',
-  secondaryColor: '#0000ff',
+  secondaryColor: '#c5d43f',
   linkColor: '#1a1a1a',
   textColor: '#0000ff',
   tertiaryColor: '#1a1a1a',
@@ -73,4 +75,20 @@ export const getSeleectedColors = () => {
 
 export const getCurrentColor = () => {
   return colors.get().current
+}
+
+export const downloadColors = () => {
+  console.log(JSON.stringify(colors.get()))
+  const colorState = JSON.stringify(colors.get())
+  fs.writeFile("colors.json", colorState, function(err) {
+    if (err) {
+      console.log(err)
+    }
+  })
+  // const colors = JSON.stringify(colors.get())
+  // fs.writeFile("colors.json", colors, function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
 }
