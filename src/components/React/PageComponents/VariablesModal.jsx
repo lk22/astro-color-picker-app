@@ -2,7 +2,7 @@ import {useStore} from '@nanostores/react'
 
 import {colors} from '../../../stores/colors.js'
 
-import SyntaxHighligter from 'react-syntax-highlighter'
+// import SyntaxHighligter from 'react-syntax-highlighter'
 
 import {useState} from 'react'
 
@@ -69,9 +69,9 @@ function VariablesModal({
           </div>
           <div className="modal-content" style={styles.content}>
               <p>Copy the design variables below</p>
-              <SyntaxHighligter language="css">
+              {/* <SyntaxHighligter language="css">
                 {code}
-              </SyntaxHighligter>
+              </SyntaxHighligter> */}
           </div>
           <div className="modal-footer" style={{marginTop: "20px"}}>
             <button className="btn btn-primary" onClick={() => handleCopyCode()}>Copy</button>
