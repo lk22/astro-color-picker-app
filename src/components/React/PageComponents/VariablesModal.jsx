@@ -1,6 +1,6 @@
 import {useStore} from '@nanostores/react'
 
-import {colors} from '../../../stores/colors'
+import {colors} from '../../../stores/colors.js'
 
 import SyntaxHighligter from 'react-syntax-highlighter'
 

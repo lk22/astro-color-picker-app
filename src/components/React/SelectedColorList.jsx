@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { colors } from "../../stores/colors";
+import { colors } from "../../stores/colors.js";
 
 function SelectedColorList() {
   const selectedColors = useStore(colors).selected;

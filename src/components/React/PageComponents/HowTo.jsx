@@ -3,7 +3,7 @@ import {
 } from "@nanostores/react";
 import {
   colors
-} from "../../../stores/colors"
+} from "../../../stores/colors.js"
 
 function HowTo() {
   const selectedColor = useStore(colors).secondaryColor;
